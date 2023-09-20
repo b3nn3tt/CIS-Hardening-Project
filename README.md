@@ -1,5 +1,5 @@
 ===========================================================================
-<div align="center"><font color="red" size="6"><b>WIP: This project is in its infancy and is subject to frequent changes.</b></font></div>
+# This project is in its infancy and is subject to frequent changes
 ===========================================================================
 
 # CIS Hardening Project
