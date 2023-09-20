@@ -20,13 +20,11 @@ run_recommendation()
 	oc1="$?"
 	if [ "$oc1" = "101" ]; then
 		# Calls the specified recommendation function
-		#$REC
-		#output_code="$?"
-		echo -e "SUCCESS"
+		$REC
+		output_code="$?"
 	else
-		#output_code="$oc1"
-		echo -e "FAIL BUT YAY"
+		output_code="$oc1"
 	fi
-	#remediation_output
+	remediation_output
 	return
 }

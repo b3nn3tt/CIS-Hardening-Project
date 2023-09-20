@@ -16,10 +16,10 @@ if [ ! "$BASH_VERSION" ] ; then
 fi
 
 # Ensure script is running with root privileges (REQUIRED)
-#if [ "$EUID" -ne 0 ]; then
-#    echo -e "\e[1;31m[*] ERROR [*]\e[0m The CIS Benchmark Deployment Tool must be run with \e[1;31mroot privileges\e[0m. This process will now terminate..."
-#    exit 1
-#fi
+if [ "$EUID" -ne 0 ]; then
+    echo -e "\e[1;31m[*] ERROR [*]\e[0m The CIS Benchmark Deployment Tool must be run with \e[1;31mroot privileges\e[0m. This process will now terminate..."
+    exit 1
+fi
 
 ####################################
 ##### GLOBAL VARIABLES SECTION #####
@@ -46,6 +46,17 @@ MANUAL_LOG=$CURRENT_LOG_DIR/manual.log
 
 # CIS PDF Reference
 PDF_LOCATION=$(find $RESOURCES_DIR -type f -name "*.pdf")
+
+# Counters
+PASSED_RECOMMENDATIONS="0"
+FAILED_RECOMMENDATIONS="0"
+REMEDIATED_RECOMMENDATIONS="0"
+NOT_APPLICABLE_RECOMMENDATIONS="0"
+EXCLUDED_RECOMMENDATIONS="0"
+MANUAL_RECOMMENDATIONS="0"
+SKIPPED_RECOMMENDATIONS="0"
+TOTAL_RECOMMENDATIONS="0"
+
 
 #####################################
 ##### IMPORT REQUIRED FUNCTIONS #####
@@ -83,17 +94,26 @@ create_log_files
 # Select which CIS Control Level to implement
 select_control_level
 
+#######################################
+######### CIS RECOMMENDATIONS #########
+#######################################
 
+########## 1. INITIAL SETUP ##########
 
+# 1.1 - Filesystem Configuration
+RN="1.1"
+RNA="Ensure system-wide crypto policy is not legacy"
+PROFILE="L1S L1W"
+REC="fed_ensure_system-wide_crypto_policy_not_legacy"
+FSN="nix_fed_ensure_system-wide_crypto_policy_not_legacy.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
 
-
-
-
-
-
-
-
-
-
-
-
+# 1.1.1 - Disable unused filesystems
+RN="1.1.1.1"
+RNA="Ensure mounting of squashfs filesystems is disabled"
+PROFILE="L2S L2W"
+REC="ensure_squashfs_filesystem_disabled"
+FSN="nix_ensure_squashfs_filesystem_disabled.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
