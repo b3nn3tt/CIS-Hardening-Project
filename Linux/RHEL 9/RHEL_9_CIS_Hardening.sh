@@ -105,7 +105,7 @@ RN="1.1"
 RNA="Ensure system-wide crypto policy is not legacy"
 PROFILE="L1S L1W"
 REC="fed_ensure_system-wide_crypto_policy_not_legacy"
-FSN="nix_fed_ensure_system-wide_crypto_policy_not_legacy.sh"
+FSN="RHEL9_fed_ensure_system-wide_crypto_policy_not_legacy.sh"
 TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
 run_recommendation
 
@@ -114,6 +114,6 @@ RN="1.1.1.1"
 RNA="Ensure mounting of squashfs filesystems is disabled"
 PROFILE="L2S L2W"
 REC="ensure_squashfs_filesystem_disabled"
-FSN="nix_ensure_squashfs_filesystem_disabled.sh"
+FSN="RHEL9_ensure_squashfs_filesystem_disabled.sh"
 TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
 run_recommendation
