@@ -6,7 +6,7 @@ To develop a suite of scripts and tools to automate the deployment of the Center
 ## Background:
 The Center for Internet Security (CIS) provides a set of best practices and guidelines to ensure the secure configuration of operating systems, software, and infrastructure. Manually implementing these guidelines can be time-consuming and error-prone, especially across diverse operating systems.
 
-### Scope:
+### Scope
 
 #### Operating Systems Covered:
 
@@ -24,3 +24,47 @@ The Center for Internet Security (CIS) provides a set of best practices and guid
 
 * Rollback capability to revert changes if necessary
 * Periodic audit tool to ensure continuous compliance with CIS guidelines
+
+## Methodology
+
+### Research & Analysis: 
+
+* Begin by thoroughly understanding the CIS guidelines for each operating system
+
+### Script Development: 
+
+* Write scripts using scripting languages and frameworks suitable for each OS
+
+### Testing:
+
+* Test each script in a controlled environment to ensure it works as intended and does not introduce new vulnerabilities
+
+### Deployment & User Training:
+
+* Deploy the tools to the target environments and train users on their correct use
+
+### Maintenance & Updates:
+
+* Regularly update the scripts to align with the latest CIS guidelines and to cater to OS updates and patches
+
+## Benefits
+
+### Efficiency:
+
+* Significantly reduces the time required to harden systems
+
+### Consistency:
+
+* Ensures that every system is configured according to the same standards
+
+### Security:
+
+* Reduces the risk of misconfigurations and vulnerabilities
+
+### Compliance:
+
+* Helps organizations maintain and demonstrate compliance with industry standards and regulations
+
+## Conclusion
+
+The CIS Hardening Automation Tools project aims to provide a streamlined and efficient way to ensure that various operating systems are securely configured according to CIS standards. By automating this process, organisations can ensure a consistent and robust security posture across their IT infrastructure.
