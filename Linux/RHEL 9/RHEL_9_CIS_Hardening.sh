@@ -64,14 +64,14 @@ TOTAL_RECOMMENDATIONS="0"
 
 # General Functions
 for FUNC in "$GEN_DIR"/*.sh; do
-	[ -e "$FUNC" ] || break
-	. "$FUNC"
+    [ -e "$FUNC" ] || break
+    . "$FUNC"
 done
 
 # CIS Recommendation Functions
 for FUNC in "$REC_DIR"/**/*.sh; do
-	[ -e "$FUNC" ] || break
-	. "$FUNC"
+    [ -e "$FUNC" ] || break
+    . "$FUNC"
 done
 
 ####################################
