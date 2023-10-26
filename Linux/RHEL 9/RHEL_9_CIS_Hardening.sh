@@ -64,14 +64,14 @@ TOTAL_RECOMMENDATIONS="0"
 
 # General Functions
 for FUNC in "$GEN_DIR"/*.sh; do
-    [ -e "$FUNC" ] || break
-    . "$FUNC"
+	[ -e "$FUNC" ] || break
+	. "$FUNC"
 done
 
 # CIS Recommendation Functions
 for FUNC in "$REC_DIR"/**/*.sh; do
-    [ -e "$FUNC" ] || break
-    . "$FUNC"
+	[ -e "$FUNC" ] || break
+	. "$FUNC"
 done
 
 ####################################
@@ -105,7 +105,7 @@ RN="1.1"
 RNA="Ensure system-wide crypto policy is not legacy"
 PROFILE="L1S L1W"
 REC="fed_ensure_system-wide_crypto_policy_not_legacy"
-FSN="RHEL9_fed_ensure_system-wide_crypto_policy_not_legacy.sh"
+FSN="RHEL9_1.1_fed_ensure_system-wide_crypto_policy_not_legacy.sh"
 TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
 run_recommendation
 
@@ -114,6 +114,14 @@ RN="1.1.1.1"
 RNA="Ensure mounting of squashfs filesystems is disabled"
 PROFILE="L2S L2W"
 REC="ensure_squashfs_filesystem_disabled"
-FSN="RHEL9_ensure_squashfs_filesystem_disabled.sh"
+FSN="RHEL9_1.1.1.1_ensure_squashfs_filesystem_disabled.sh"
 TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
+
+RN="1.1.1.2"
+RNA="Ensure mounting of udf filesystems is disabled"
+profile="L2S L2W"
+REC="ensure_udf_filesystem_disabled"
+FSN="RHEL9_1.1.1.2_ensure_udf_filesystem_disabled.sh"
+total_recommendations=$((total_recommendations+1))
 run_recommendation
