@@ -101,3 +101,4 @@ fed_ensure_system-wide_crypto_policy_not_legacy() {
         *) return "${XCCDF_RESULT_FAIL:-102}" ;;
     esac
 }
+

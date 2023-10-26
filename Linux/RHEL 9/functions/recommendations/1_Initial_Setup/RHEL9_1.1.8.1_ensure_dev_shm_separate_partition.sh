@@ -6,22 +6,21 @@
 # Version: 1.0                                                         #
 # Git: https://github.com/b3nn3tt                                      #
 #                                                                      #
-# File Name:   RHEL9_1.1.2.1_ensure_tmp_separate_partition.sh          #
-# Description: Automates the process of placing the /tmp directory     #
-#              on its own partition                                    #
+# File Name:   RHEL9_1.1.8.1_ensure_dev_shm_separate_partition.sh      #
+# Description: Ensures /dev/shm is configured                          #
 #                                                                      #
 ########################################################################
 
-ensure_tmp_separate_partition()
+ensure_dev_shm_separate_partition()
 {
 
 echo -e "\n**************************************************\n- $(date +%d-%b-%Y' '%T)\n- Start Recommendation \"$RN - $RNA\"" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
    test=""
 
-   ensure_tmp_separate_partition_chk()
+   ensure_dev_shm_separate_partition_chk()
    {
-      echo -e "- Start check - Ensure /tmp is a separate partition" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
-      XCCDF_VALUE_REGEX="/tmp"
+      echo -e "- Start check - Ensure /dev/shm is configured" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
+      XCCDF_VALUE_REGEX="/dev/shm"
       l_partition_test=""
 
       if [ "$test" != "remediated" ]; then
@@ -47,39 +46,39 @@ echo -e "\n**************************************************\n- $(date +%d-%b-%
 
       if [ "$l_partition_test" = "passed" ]; then
          echo -e "- PASS:\n- $XCCDF_VALUE_REGEX is properly configured"  | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
-         echo -e "- End check - Ensure /tmp is a separate partition" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
+         echo -e "- End check - Ensure /dev/shm is configured" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
          return "${XCCDF_RESULT_PASS:-101}"
       else
          echo -e "- FAIL:\n- $XCCDF_VALUE_REGEX is NOT properly configured" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
-         echo -e "- End check - Ensure /tmp is a separate partition" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
+         echo -e "- End check - Ensure /dev/shm is configured" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
          return "${XCCDF_RESULT_FAIL:-102}"
       fi
    }
 
 
-   ensure_tmp_separate_partition_fix()
+   ensure_dev_shm_separate_partition_fix()
    {
-      echo -e "- Start remediation - Ensure /tmp is a separate partition" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
+      echo -e "- Start remediation - Ensure /dev/shm is configured" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
 
       if ! grep -Pq "^\h*[^#]+\h+$XCCDF_VALUE_REGEX\h+" /etc/fstab; then
          echo -e "- Updating $XCCDF_VALUE_REGEX in /etc/fstab" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
          echo "# Added by CIS Linux Build Kit" >> /etc/fstab
-         echo "tmpfs   /tmp    tmpfs   defaults,noexec,nosuid,nodev 0   0" >> /etc/fstab
+         echo "tmpfs   /dev/shm    tmpfs   defaults,noexec,nosuid,nodev,seclabel 0   0" >> /etc/fstab
       fi
 
       if grep -Pq "^\h*[^#]+\h+$XCCDF_VALUE_REGEX\h+" /etc/fstab; then
          test=remediated
       fi
 
-      echo -e "- End remediation - Ensure /tmp is a separate partition" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
+      echo -e "- End remediation - Ensure /dev/shm is configured" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
    }
 
-   ensure_tmp_separate_partition_chk
+   ensure_dev_shm_separate_partition_chk
    if [ "$?" = "101" ]; then
       [ -z "$test" ] && test="passed"
    else
-      ensure_tmp_separate_partition_fix
-      ensure_tmp_separate_partition_chk
+      ensure_dev_shm_separate_partition_fix
+      ensure_dev_shm_separate_partition_chk
    fi
 
    # Set return code, end recommendation entry in verbose log, and return

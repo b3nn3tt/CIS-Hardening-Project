@@ -6,80 +6,61 @@
 # Version: 1.0                                                         #
 # Git: https://github.com/b3nn3tt                                      #
 #                                                                      #
-# File Name:   RHEL9_1.1.2.1_ensure_tmp_separate_partition.sh          #
-# Description: Automates the process of placing the /tmp directory     #
-#              on its own partition                                    #
+# File Name:   RHEL9_1.1.4.1_ensure_var_tmp_separate_partition.sh       #
+# Description: Ensures separate partition exists for /var/tmp          #
 #                                                                      #
 ########################################################################
 
-ensure_tmp_separate_partition()
+ensure_var_tmp_separate_partition()
 {
 
 echo -e "\n**************************************************\n- $(date +%d-%b-%Y' '%T)\n- Start Recommendation \"$RN - $RNA\"" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
    test=""
 
-   ensure_tmp_separate_partition_chk()
+   ensure_var_tmp_separate_partition_chk()
    {
-      echo -e "- Start check - Ensure /tmp is a separate partition" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
-      XCCDF_VALUE_REGEX="/tmp"
+      echo -e "- Start check - Ensure separate partition exists for /var/tmp" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
+      XCCDF_VALUE_REGEX="/var/tmp"
       l_partition_test=""
 
-      if [ "$test" != "remediated" ]; then
-         if findmnt --kernel "$XCCDF_VALUE_REGEX"; then
-            echo -e "- $XCCDF_VALUE_REGEX is a separate partition" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
-            if grep -Pq "^\h*[^#]+\h+$XCCDF_VALUE_REGEX\h+" /etc/fstab || systemctl is-enabled tmp.mount | grep -q 'enabled'; then
-               echo -e "- $XCCDF_VALUE_REGEX will be mounted at boot time" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
-               l_partition_test="passed"
-            else
-               echo -e "- $XCCDF_VALUE_REGEX will NOT be mounted at boot time" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
-            fi
-         else
-            echo -e "- $XCCDF_VALUE_REGEX is NOT a separate partition" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
-         fi
-      else
-         if grep -Pq "^\h*[^#]+\h+$XCCDF_VALUE_REGEX\h+" /etc/fstab || systemctl is-enabled tmp.mount | grep -q 'enabled'; then
-            echo -e "- $XCCDF_VALUE_REGEX will be mounted at boot time" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
+      if findmnt --kernel "$XCCDF_VALUE_REGEX"; then
+            echo -e "- $XCCDF_VALUE_REGEX is a separate partition\n$(findmnt --kernel $XCCDF_VALUE_REGEX)" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
             l_partition_test="passed"
-         else
-            echo -e "- $XCCDF_VALUE_REGEX will NOT be mounted at boot time" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
-         fi
+      else
+            echo -e "- $XCCDF_VALUE_REGEX is NOT a separate partition" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
       fi
 
       if [ "$l_partition_test" = "passed" ]; then
          echo -e "- PASS:\n- $XCCDF_VALUE_REGEX is properly configured"  | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
-         echo -e "- End check - Ensure /tmp is a separate partition" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
+         echo -e "- End check - Ensure separate partition exists for /var/tmp" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
          return "${XCCDF_RESULT_PASS:-101}"
       else
          echo -e "- FAIL:\n- $XCCDF_VALUE_REGEX is NOT properly configured" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
-         echo -e "- End check - Ensure /tmp is a separate partition" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
+         echo -e "- End check - Ensure separate partition exists for /var/tmp" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
          return "${XCCDF_RESULT_FAIL:-102}"
       fi
    }
 
 
-   ensure_tmp_separate_partition_fix()
+   ensure_var_tmp_separate_partition_fix()
    {
-      echo -e "- Start remediation - Ensure /tmp is a separate partition" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
+      echo -e "- Start remediation - Ensure separate partition exists for /var/tmp" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
 
-      if ! grep -Pq "^\h*[^#]+\h+$XCCDF_VALUE_REGEX\h+" /etc/fstab; then
-         echo -e "- Updating $XCCDF_VALUE_REGEX in /etc/fstab" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
-         echo "# Added by CIS Linux Build Kit" >> /etc/fstab
-         echo "tmpfs   /tmp    tmpfs   defaults,noexec,nosuid,nodev 0   0" >> /etc/fstab
-      fi
+      echo -e "- For new installations, during installation create a custom partition setup and specify a separate partition for /var/tmp.\n- For systems that were previously installed, create a new partition and configure /etc/fstab as appropriate." | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
 
-      if grep -Pq "^\h*[^#]+\h+$XCCDF_VALUE_REGEX\h+" /etc/fstab; then
-         test=remediated
-      fi
+      test=manual
 
-      echo -e "- End remediation - Ensure /tmp is a separate partition" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
+      echo -e "- End remediation - Ensure separate partition exists for /var/tmp" | tee -a "$VERBOSE_LOG" 2>> "$ERROR_LOG"
    }
 
-   ensure_tmp_separate_partition_chk
+   ensure_var_tmp_separate_partition_chk
    if [ "$?" = "101" ]; then
       [ -z "$test" ] && test="passed"
    else
-      ensure_tmp_separate_partition_fix
-      ensure_tmp_separate_partition_chk
+      ensure_var_tmp_separate_partition_fix
+      if [ "$test" != "manual" ]; then
+         ensure_var_tmp_separate_partition_chk
+      fi
    fi
 
    # Set return code, end recommendation entry in verbose log, and return
