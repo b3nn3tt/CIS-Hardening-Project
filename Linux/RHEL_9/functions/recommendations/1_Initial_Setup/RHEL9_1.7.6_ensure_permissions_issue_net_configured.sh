@@ -7,9 +7,9 @@
 # Git: https://github.com/b3nn3tt                                      #
 #                                                                      #
 # File Name:   RHEL9_1.7.6_ensure_permissions_issue_net_configured.sh  #
-# Description: Ensures permissions on /etc/issue are configured        #
+# Description: Ensures permissions on /etc/issue.net are configured    #
 #                                                                      #
-########################################################################Ensures permissions on /etc/issue.net are configured
+########################################################################
 
 ensure_permissions_issue_net_configured()
 {

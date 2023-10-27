@@ -10,7 +10,6 @@
 # Description: Ensures core dump storage is disabled                   #
 #                                                                      #
 ########################################################################
-#
 
 ensure_core_dump_storage_disabled()
 {

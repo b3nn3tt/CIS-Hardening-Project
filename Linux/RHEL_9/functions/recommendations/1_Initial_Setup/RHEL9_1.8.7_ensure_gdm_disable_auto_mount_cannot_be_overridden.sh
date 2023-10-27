@@ -10,7 +10,6 @@
 # Description: Ensures GDM disabling automatic mounting of removable media is not overridden #
 #                                                                                            #
 ##############################################################################################
-#
 
 ensure_gdm_disable_auto_mount_cannot_be_overridden()
 {

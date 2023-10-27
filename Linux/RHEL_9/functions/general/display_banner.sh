@@ -12,7 +12,7 @@
 ###########################################################
 
 display_banner(){
-    local line="############################################################"
+    local line="###############################################################"
     echo -e "\n${line}\n"
     echo -e "\t\tCIS Benchmark Deployment Tool\n"
     echo -e "\tRed Hat Enterprise Linux v9 Benchmark \033[1;32mv1.0.0\033[0m"

@@ -10,7 +10,6 @@
 # Description: Ensures updates, patches, and additional security software are installed #
 #                                                                                       #
 #########################################################################################
-
  
 ensure_updates_patches_security_software_installed()
 {

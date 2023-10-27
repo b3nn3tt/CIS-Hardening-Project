@@ -10,7 +10,6 @@
 # Description: Ensures message of the day is configured properly       #
 #                                                                      #
 ########################################################################
-#
 
 ensure_motd_configured()
 {
