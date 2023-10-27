@@ -6,8 +6,6 @@ This tool provides an automated approach to harden RHEL 9 systems in line with t
   <img src="https://github.com/b3nn3tt/CIS-Hardening-Project/assets/42213764/bfe1cf42-b382-408b-b4df-63298b61623b" alt="Disclaimer">
 </p>
 
-![image](https://github.com/b3nn3tt/CIS-Hardening-Project/assets/42213764/bfe1cf42-b382-408b-b4df-63298b61623b)
-
 ## Features
 
 - **Profile Selection**: Users can select between different CIS profile levels:
