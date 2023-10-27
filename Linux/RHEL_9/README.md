@@ -24,7 +24,11 @@ Modularity: Recommendations are executed via individual scripts, making it easy 
    ```bash
    git clone https://github.com/b3nn3tt/RHEL_9_CIS_Hardening.git
    cd RHEL_9_CIS_Hardening
-1. Clone the repository:
+2. Make the main script executable::
    ```bash
-   git clone https://github.com/b3nn3tt/RHEL_9_CIS_Hardening.git
-   cd RHEL_9_CIS_Hardening
+   chmod +x RHEL_9_CIS_Hardening.sh
+3. Run the tool::
+   ```bash
+   sudo ./RHEL_9_CIS_Hardening.sh
+4. Follow the on-screen prompts to select the desired profile level::
+5. Once the script completes, review the logs in the logs/ directory for details on the applied controls and any potential issues::
