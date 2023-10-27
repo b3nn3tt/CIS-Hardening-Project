@@ -5,10 +5,10 @@ This tool provides an automated approach to harden RHEL 9 systems in line with t
 ## Features
 
 - **Profile Selection**: Users can select between different CIS profile levels:
--- L1 Server
--- L1 Workstation
--- L2 Server
--- L2 Workstation
+   - L1 Server
+   - L1 Workstation
+   - L2 Server
+   - L2 Workstation
 -- **Logging**: Comprehensive logs are generated, detailing which recommendations passed, failed, were skipped, or require manual intervention.
 -- **Modularity**: Recommendations are executed via individual scripts, making it easy to update or modify specific controls.
 
