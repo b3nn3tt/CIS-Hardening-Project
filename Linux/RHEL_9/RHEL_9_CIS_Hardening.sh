@@ -877,18 +877,202 @@ FSN="RHEL9_2.4_ensure_nonessential_services_removed_or_masked.sh"
 TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
 run_recommendation
 
+####################################
+##### 3. NETWORK CONFIGURATION #####
+####################################
 
+##### 3.1.x UNUSED NETWORK PROTOCOLS AND DEVICES #####
 
+RN="3.1.1"
+RNA="Ensure IPv6 status is identified"
+PROFILE="L1S L1W"
+REC="fed_ensure_ipv6_status_identified"
+FSN="RHEL9_3.1.1_fed_ensure_ipv6_status_identified.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
 
+RN="3.1.2"
+RNA="Ensure wireless interfaces are disabled"
+PROFILE="L1S"
+REC="ensure_wireless_interfaces_disabled"
+FSN="RHEL9_3.1.2_ensure_wireless_interfaces_disabled.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
 
+RN="3.1.3"
+RNA="Ensure TIPC is disabled"
+PROFILE="L2S L2W"
+REC="ensure_tipc_disabled"
+FSN="RHEL9_3.1.3_ensure_tipc_disabled.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
 
+##### 3.2.x IP FORWARDING #####
 
+RN="3.2.1"
+RNA="Ensure IP forwarding is disabled"
+PROFILE="L1S L1W"
+REC="ensure_ip_forwarding_disabled"
+FSN="RHEL9_3.2.1_ensure_ip_forwarding_disabled.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
 
+RN="3.2.2"
+RNA="Ensure packet redirect sending is disabled"
+PROFILE="L1S L1W"
+REC="ensure_packet_redirect_sending_disabled"
+FSN="RHEL9_3.2.2_ensure_packet_redirect_sending_disabled.sh"
+TOTAL_RECOMMENDATIONS=$((total_recommendations+1))
+run_recommendation
 
+##### 3.3.x NETWORK PARAMETERS: HOST AND ROUTER #####
 
+RN="3.3.1"
+RNA="Ensure source routed packets are not accepted"
+PROFILE="L1S L1W"
+REC="ensure_source_routed_packets_not_accepted"
+FSN="RHEL9_3.3.1_ensure_source_routed_packets_not_accepted.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
 
+RN="3.3.2"
+RNA="Ensure ICMP redirects are not accepted"
+PROFILE="L1S L1W"
+REC="ensure_icmp_redirects_not_accepted"
+FSN="RHEL9_3.3.2_ensure_icmp_redirects_not_accepted.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
 
+RN="3.3.3"
+RNA="Ensure secure ICMP redirects are not accepted"
+PROFILE="L1S L1W"
+REC="ensure_secure_icmp_redirects_not_accepted"
+FSN="RHEL9_3.3.3_ensure_secure_icmp_redirects_not_accepted.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
 
+RN="3.3.4"
+RNA="Ensure suspicious packets are logged"
+PROFILE="L1S L1W"
+REC="ensure_suspicious_packets_logged"
+FSN="RHEL9_3.3.4_ensure_suspicious_packets_logged.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
 
+RN="3.3.5"
+RNA="Ensure broadcast ICMP requests are ignored"
+PROFILE="L1S L1W"
+REC="ensure_broadcast_icmp_requests_ignored"
+FSN="RHEL9_3.3.5_ensure_broadcast_icmp_requests_ignored.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
 
+RN="3.3.6"
+RNA="Ensure bogus ICMP responses are ignored"
+PROFILE="L1S L1W"
+REC="ensure_bogus_icmp_responses_ignored"
+FSN="RHEL9_3.3.6_ensure_bogus_icmp_responses_ignored.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
 
+RN="3.3.7"
+RNA="Ensure Reverse Path Filtering is enabled"
+PROFILE="L1S L1W"
+REC="ensure_reverse_path_filtering_enabled"
+FSN="RHEL9_3.3.7_ensure_reverse_path_filtering_enabled.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
+
+RN="3.3.8"
+RNA="Ensure TCP SYN Cookies is enabled"
+PROFILE="L1S L1W"
+REC="ensure_tcp_syn_cookies_enabled"
+FSN="RHEL9_3.3.8_ensure_tcp_syn_cookies_enabled.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
+
+RN="3.3.9"
+RNA="Ensure IPv6 router advertisements are not accepted"
+PROFILE="L1S L1W"
+REC="ensure_ipv6_router_advertisements_not_accepted"
+FSN="RHEL9_3.3.9_ensure_ipv6_router_advertisements_not_accepted.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
+
+##### 3.4.x CONFIGURE HOST BASED FIREWALL #####
+
+# 3.4.1.x CONFIGURE A FIREWALL UTILITY
+
+RN="3.4.1.1"
+RNA="Ensure nftables is installed"
+PROFILE="L1S L1W"
+REC="fed_ensure_nftables_installed"
+FSN="RHEL9_3.4.1.1_fed_ensure_nftables_installed.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
+
+RN="3.4.1.2"
+RNA="Ensure a single firewall configuration utility is in use"
+PROFILE="L1S L1W"
+REC="fed_ensure_single_firewall_configuration_utility"
+FSN="RHEL9_3.4.1.2_fed_ensure_single_firewall_configuration_utility.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
+
+# 3.4.2.x - CONFIGURE FIREWALL RULES
+
+RN="3.4.2.1"
+RNA="Ensure firewalld default zone is set"
+PROFILE="L1S L1W"
+REC="fed_ensure_firewalld_default_zone_set"
+FSN="RHEL9_3.4.2.1_fed_ensure_firewalld_default_zone_set.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
+
+RN="3.4.2.2"
+RNA="Ensure at least one nftables table exists"
+PROFILE="L1S L1W"
+REC="fed_ensure_nftables_table_exists"
+FSN="RHEL9_3.4.2.2_fed_ensure_nftables_table_exists.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
+
+RN="3.4.2.3"
+RNA="Ensure nftables base chains exist"
+PROFILE="L1S L1W"
+REC="fed_ensure_nftables_base_chains_exist"
+FSN="RHEL9_3.4.2.3_fed_ensure_nftables_base_chains_exist.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
+
+RN="3.4.2.4"
+RNA="Ensure host based firewall loopback traffic is configured"
+PROFILE="L1S L1W"
+REC="fed_ensure_nftables_loopback_traffic_is_configured"
+FSN="RHEL9_3.4.2.4_fed_ensure_nftables_loopback_traffic_is_configured.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
+
+RN="3.4.2.5"
+RNA="Ensure firewalld drops unnecessary services and ports"
+PROFILE="L1S L1W"
+REC="fed_ensure_firewalld_drops_unnecessary_services_and_ports"
+FSN="RHEL9_3.4.2.5_fed_ensure_firewalld_drops_unnecessary_services_and_ports.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
+
+RN="3.4.2.6"
+RNA="Ensure nftables established connections are configured"
+PROFILE="L1S L1W"
+REC="fed_ensure_nftables_outbound_established_connections_configured"
+FSN="RHEL9_3.4.2.6_fed_ensure_nftables_outbound_established_connections_configured.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
+
+RN="3.4.2.7"
+RNA="Ensure nftables default deny firewall policy"
+PROFILE="L1S L1W"
+REC="fed_ensure_nftables_default_deny_firewall_policy"
+FSN="RHEL9_3.4.2.7_fed_ensure_nftables_default_deny_firewall_policy.sh"
+TOTAL_RECOMMENDATIONS=$((TOTAL_RECOMMENDATIONS+1))
+run_recommendation
