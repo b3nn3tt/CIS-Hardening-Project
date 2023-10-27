@@ -13,6 +13,10 @@ This tool provides an automated approach to harden RHEL 9 systems in line with t
    - L1 Workstation
    - L2 Server
    - L2 Workstation
+<p align="center">
+  <img src="https://github.com/b3nn3tt/CIS-Hardening-Project/assets/42213764/7be3352b-51c3-4315-8f34-cfbe93adab17" alt="Select System Profile">
+</p>
+
 - **Logging**: Comprehensive logs are generated, detailing which recommendations passed, failed, were skipped, or require manual intervention.
 - **Modularity**: Recommendations are executed via individual scripts, making it easy to update or modify specific controls.
 
