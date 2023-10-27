@@ -2,7 +2,7 @@
 
 This tool provides an automated approach to harden RHEL 9 systems in line with the CIS benchmarks. It allows users to apply security controls at various levels, ensuring systems are compliant and secure.
 
-![image](https://github.com/b3nn3tt/CIS-Hardening-Project/assets/42213764/a088f459-7ed5-4cf6-9960-358539bb8c41)
+![image](https://github.com/b3nn3tt/CIS-Hardening-Project/assets/42213764/bfe1cf42-b382-408b-b4df-63298b61623b)
 
 ## Features
 
