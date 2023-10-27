@@ -24,3 +24,7 @@ Modularity: Recommendations are executed via individual scripts, making it easy 
    ```bash
    git clone https://github.com/b3nn3tt/RHEL_9_CIS_Hardening.git
    cd RHEL_9_CIS_Hardening
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/b3nn3tt/RHEL_9_CIS_Hardening.git
+   cd RHEL_9_CIS_Hardening
