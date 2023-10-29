@@ -29,8 +29,8 @@ This tool provides an automated approach to harden RHEL 9 systems in line with t
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/b3nn3tt/RHEL_9_CIS_Hardening.git
-   cd RHEL_9_CIS_Hardening
+   git clone https://github.com/b3nn3tt/CIS-Hardening-Project.git
+   cd Linux/RHEL_9/
 2. Make the main script executable:
    ```bash
    chmod +x RHEL_9_CIS_Hardening.sh
